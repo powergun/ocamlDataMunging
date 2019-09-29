@@ -5,10 +5,6 @@ let runDemo () =
     print_char(c);
   print_endline(String.make 9 'c');
   print_endline("there is " ^ "a cow");
-  print_endline(String.concat "." ["there"; "is"; "a"; "cow"]);;
-
-  
-  
-
+  print_endline(String.concat "." ["there"; "is"; "a"; "cow"]);
   ;;
 runDemo();;
