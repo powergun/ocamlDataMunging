@@ -1,0 +1,5 @@
+(library
+ (name simple_sexpr)
+ (libraries core base stdio)
+ (inline_tests)
+ (preprocess (pps ppx_jane)))
