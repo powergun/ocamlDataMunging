@@ -59,3 +59,20 @@ let%test "filter_string skips non-string objects" =
 
   true
 ;;
+
+let%test "optional field" =
+  let json0 = Yojson.Basic.from_string "{}" in
+  let json1 = Yojson.Basic.from_string "{\"name\": \"iddqd\"}" in
+  let open Yojson.Basic.Util in
+  begin 
+    match (json0 |> member "name" |> to_string_option) with
+    | None -> Stdio.printf "field(name) does not exist\n"
+    | Some v -> Stdio.printf "field(name)=%s\n" v
+  end;
+  begin 
+    match (json1 |> member "name" |> to_string_option) with
+    | None -> Stdio.printf "field(name) does not exist\n"
+    | Some v -> Stdio.printf "field(name)=%s\n" v
+  end;
+  true
+;;
