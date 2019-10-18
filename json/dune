@@ -1,5 +1,7 @@
 (library
- (name read_inline)
+ (name simple_json)
  (libraries base core stdio yojson)
  (inline_tests)
  (preprocess (pps ppx_jane)))
+
+
