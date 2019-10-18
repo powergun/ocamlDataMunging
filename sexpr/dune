@@ -1,3 +1,6 @@
+; this is a comment
+; this is another comment
+
 (library
  (name simple_sexpr)
  (libraries core base stdio)
