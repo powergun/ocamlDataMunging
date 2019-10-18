@@ -38,7 +38,7 @@ let%test "S-expr -> Interval conversion" =
   exception *)
   let ss = {sexpression|
   (Empty 
-  ;(Range 13 4)
+  (Range 13 4)
   Empty)
   |sexpression} 
   in
