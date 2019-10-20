@@ -1,0 +1,7 @@
+(library
+ (name simple_regex)
+ (libraries core base stdio re)
+ (inline_tests)
+ (preprocess (pps ppx_jane))
+ )
+ 
