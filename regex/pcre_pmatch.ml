@@ -28,7 +28,12 @@ let prt_lines text =
   aux (List.filter ~f:(fun l -> String.length l > 0) (String.split_lines text))
 ;;
 
-let%test "unlines and print" =
+(*
+ * source: https://dune.readthedocs.io/en/stable/tests.html
+ * inline expectation tests; this uses ppx_expect
+ * see: https://github.com/janestreet/ppx_expect (this comes with jane street's)
+ * *)
+let%expect_test "unlines and print" =
   let text = {text|
 ; there is 
 ; a silence
@@ -36,8 +41,12 @@ let%test "unlines and print" =
 ; no sound
 |text} in
   prt_lines text;
-
-  true
+  [%expect{|
+  ; there is
+  ; a silence
+  ; where hath been
+  ; no sound
+  |}]
 ;;
 
 let grep_and_print rex text =
@@ -53,7 +62,7 @@ let grep_and_print rex text =
   aux (String.split_lines text)
 ;;
 
-let%test "unlines, grep (pcre) and print" =
+let%expect_test "unlines, grep (pcre) and print" =
   let rex = Re.Pcre.regexp {regex|0x[\da-fA-F]+|regex} in 
   let text = {text|
 ; comment
@@ -64,6 +73,7 @@ lea ebx ecx
 push ebx
 |text} in
   grep_and_print rex text;
-
-  true
+  [%expect{|
+  mov ecx 0x1212312fff
+  |}]
 ;;
